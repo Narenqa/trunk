@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Amazon " parallel="false">
+
+	<listeners>
+		<listener class-name="com.discovery.ui_tests.TestsListener"></listener>
+	</listeners>
+	<test name="Test">
+		<packages>
+			<package name="com.discovery.tests.*" />
+		</packages>
+
+
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

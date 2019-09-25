@@ -1,0 +1,24 @@
+Feature: Verify Favorite Shows
+  1.	Navigate to https://go.discovery.com/
+  2.	Select “See All Shows” available in “Shows” tab
+  3.	Wait till the page loads and then select the shows which contain “APOLLO”
+  4.	Verify the Favorites (+ or -) status.
+  5.	If it is already set i.e. “-”, do unfavorite and icon should change to i.e. “+”.
+  6.	If it is not set i.e. "+", do favorite and icon should change to i.e. "-".
+  7.	Store all the favorite or unfavorite done titles in list.
+  8.	Once favorite or unfavorite is done, goto “My Videos”.
+  9.    Validate the favorite or unfavorite titles under “FAVORITE SHOWS”
+
+  Scenario Outline: Discovery
+    Given I navigate to "<baseUrl>"
+    And I select "See All Shows" available in "Shows" tab
+    Then I Wait till the page loads
+    Then select the shows which contain "APOLLO"
+    Then Verify the favorite status and Add shows to favorite or unfavorite
+    Then I goto "My Videos"
+    Then Validate the favorite or unfavorite titles under "FAVORITE SHOWS"
+  Examples:
+  |	baseUrl		                |
+  | https://go.discovery.com/   |
+
+
