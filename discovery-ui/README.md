@@ -13,11 +13,11 @@
    $ mvn test
    
 # Test Results: 
-1. Results file for Test2: 
-   $ cd discovery-ui/src/test/java/output/episodes.csv
+1. Results episodes.csv file for Test2: 
+   $ cd discovery-ui/src/test/java/output
 2. Test Summary Report for UI Tests: 
    target/cucumber-reports/index.html
    
-<img src="src/test/java/output/summary.png" width = "400" height = "200">
+<img src="src/test/java/output/summary.png" width = "400" height = "300">
 
  
