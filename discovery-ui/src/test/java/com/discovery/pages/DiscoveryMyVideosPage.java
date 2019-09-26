@@ -42,49 +42,25 @@ public class DiscoveryMyVideosPage extends DriverScript {
         return favoriteShowsHeading;
     }
 
-    public void setFavoriteShowsHeading(WebElement favoriteShowsHeading) {
-        this.favoriteShowsHeading = favoriteShowsHeading;
-    }
-
     public WebElement getFavoriteShowsCarouselContent() {
         return favoriteShowsCarouselContent;
-    }
-
-    public void setFavoriteShowsCarouselContent(WebElement favoriteShowsCarouselContent) {
-        this.favoriteShowsCarouselContent = favoriteShowsCarouselContent;
     }
 
     public List<WebElement> getMyVideosFavoriteShowsImage() {
         return myVideosFavoriteShowsImage;
     }
 
-    public void setMyVideosFavoriteShowsImage(List<WebElement> myVideosFavoriteShowsImage) {
-        this.myVideosFavoriteShowsImage = myVideosFavoriteShowsImage;
-    }
-
     public List<WebElement> getMyVideosContentBox() {
         return myVideosContentBox;
     }
 
-    public void setMyVideosContentBox(List<WebElement> myVideosContentBox) {
-        this.myVideosContentBox = myVideosContentBox;
-    }
-
-
     public WebElement getMyVideosFavoriteShowsTitle() {
         return myVideosFavoriteShowsTitle;
-    }
-
-    public void setMyVideosFavoriteShowsTitle(WebElement myVideosFavoriteShowsTitle) {
-        this.myVideosFavoriteShowsTitle = myVideosFavoriteShowsTitle;
     }
 
     public WebElement getFavoriteShowsCarousel() {
         return favoriteShowsCarousel;
     }
 
-    public void setFavoriteShowsCarousel(WebElement favoriteShowsCarousel) {
-        this.favoriteShowsCarousel = favoriteShowsCarousel;
-    }
 
 }

@@ -9,6 +9,7 @@ Feature: Verify Favorite Shows
   8.	Once favorite or unfavorite is done, goto “My Videos”.
   9.    Validate the favorite or unfavorite titles under “FAVORITE SHOWS”
 
+  @sanity
   Scenario Outline: Discovery
     Given I navigate to "<baseUrl>"
     And I select "See All Shows" available in "Shows" tab

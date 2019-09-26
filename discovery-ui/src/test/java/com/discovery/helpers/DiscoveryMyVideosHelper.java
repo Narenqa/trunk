@@ -50,7 +50,6 @@ public class DiscoveryMyVideosHelper extends DriverScript {
                 favoriteVideosTitle.add(showTitle.toLowerCase());
                 i++;
             }
-
         } catch(Exception e){
             log.error(e.getMessage());
         }

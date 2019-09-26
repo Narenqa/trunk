@@ -24,7 +24,7 @@ public class DiscoveryEpisodePage extends DriverScript {
         return episodeList;
     }
 
-    @FindBy(css="ul.episodeList__list li")
+    @FindBy(css="ul.episodeList__list li.episodeVideoTile__wrapper")
     private List<WebElement> episodeList;
 
     @FindBy(css = "ul li.episodeVideoTile__wrapper")
