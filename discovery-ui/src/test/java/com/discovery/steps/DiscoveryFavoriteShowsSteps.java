@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by narendraguntaka on 25/09/19.
  */
-public class DiscoverySteps extends DriverScript{
+public class DiscoveryFavoriteShowsSteps extends DriverScript{
 
     DiscoveryNavigationHelper discoveryNavigationHelper = new DiscoveryNavigationHelper();
     DiscoveryMyVideosHelper discoveryMyVideosHelper = new DiscoveryMyVideosHelper();
@@ -23,24 +23,15 @@ public class DiscoverySteps extends DriverScript{
     List<String> favoriteShowsTitles;
     List<String> myVideosFavoriteShowsTitles;
 
-    @Given("^I navigate to \"([^\"]*)\"$")
-    public void I_enter(String url){
-        discoveryNavigationHelper.navigateToDiscoveryHomePage(url);
-    }
 
     @And("^I select \"([^\"]*)\" available in \"([^\"]*)\" tab$")
     public void navigateToSeeAllShows(String seeAllShows, String showsLink){
         discoveryNavigationHelper.navigateToSeeAllShows(seeAllShows, showsLink);
     }
 
-    @Then("^I Wait till the page loads$")
-    public void waitForPageLoad(){
-        discoveryNavigationHelper.waitForPageLoad();
-    }
-
     @Then("^select the shows which contain \"([^\"]*)\"$")
-    public void selectShows(String search){
-        discoveryTvShowsHelper.selectShow(search.toLowerCase());
+    public void selectShows(String showTitle){
+        discoveryTvShowsHelper.selectShowByTitle(showTitle.toLowerCase());
     }
 
 

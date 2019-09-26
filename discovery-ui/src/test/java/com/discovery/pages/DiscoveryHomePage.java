@@ -20,34 +20,79 @@ public class DiscoveryHomePage extends DriverScript {
 
 
     @FindBy(css = "a.dscHeaderMain__headerLogo")
-    WebElement headerLogo;
+    private WebElement headerLogo;
 
     @FindBy(css = "li.dscHeaderMain__showsLink")
-    public WebElement showsLink;
+    private WebElement showsLink;
 
 	@FindBy(css = "a.dscShowsDropContent__seeAllShows")
-	public WebElement seeAllShowsButton;
+	private WebElement seeAllShowsButton;
 
     @FindBy(css = "div.allShowsGrid__container")
-    public WebElement seeAllGrid;
+    private WebElement seeAllGrid;
 
     @FindBy(xpath = "//div/a[contains(@href,\"apollo\")]")
-    public WebElement tvShowsTitle;
+    private WebElement tvShowsTitle;
 
     @FindBy(css = "li>svg.dscHeaderMain__iconMenu")
-    public WebElement menuIcon;
+    private WebElement menuIcon;
 
 
-    public WebElement getMyVidesLink() {
-        return myVidesLink;
+    @FindBy(css = "div.popularShowsCarousel__main")
+    private WebElement popularShowsCarousel;
+
+    @FindBy(css = "div.popularShowsCarousel__main li.popularShowsCarousel__dotInactive")
+    private WebElement popularShowsDots;
+
+    @FindBy(css = "div.popularShowsCarousel__main i.icon-arrow-left")
+    private WebElement popularShowsLeftArrow;
+
+
+    @FindBy(css = "div.popularShowsCarousel__main i.icon-arrow-right")
+    private WebElement popularShowsRightArrow;
+
+    @FindBy(css = "div.popularShowTile__showButtonWrapper button")
+    private WebElement popularShowsExploreButton;
+
+    public WebElement getPopularShowsExploreButton() {
+        return popularShowsExploreButton;
     }
 
-    public void setMyVidesLink(WebElement myVidesLink) {
-        this.myVidesLink = myVidesLink;
+    public WebElement getPopularShowsRightArrow() {
+        return popularShowsRightArrow;
+    }
+
+    public WebElement getPopularShowsLeftArrow() {
+        return popularShowsLeftArrow;
+    }
+
+    public WebElement getPopularShowsDots() {
+        return popularShowsDots;
+    }
+
+    public void setPopularShowsDots(WebElement popularShowsDots) {
+        this.popularShowsDots = popularShowsDots;
+    }
+
+
+    public WebElement getPopularShowsCarousel() {
+        return popularShowsCarousel;
+    }
+
+    public void setPopularShowsCarousel(WebElement popularShowsCarousel) {
+        this.popularShowsCarousel = popularShowsCarousel;
+    }
+
+    public WebElement getMyVideosLink() {
+        return myVideosLink;
+    }
+
+    public void setMyVideosLink(WebElement myVidesLink) {
+        this.myVideosLink = myVidesLink;
     }
 
     @FindBy(css = "a[href=\"/my-videos\"]")
-    public WebElement myVidesLink;
+    public WebElement myVideosLink;
 
     public WebElement getMenuIcon() {
         return menuIcon;

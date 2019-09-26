@@ -26,6 +26,10 @@ public class DiscoveryMyVideosHelper extends DriverScript {
     Logger log = Logger.getLogger(DiscoveryMyVideosHelper.class);
 
     List<String> favoriteVideosTitle;
+
+    /*
+        Validate the favorite or unfavorite titles under “FAVORITE SHOWS”
+     */
     public List<String> getFavoriteVideosTitle(String title) {
         log.info("************************ Helper to getFavoriteVideosTitle started ***********************");
         try{

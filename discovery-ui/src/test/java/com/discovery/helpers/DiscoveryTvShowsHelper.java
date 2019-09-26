@@ -27,13 +27,13 @@ public class DiscoveryTvShowsHelper extends DriverScript {
 
     Logger log = Logger.getLogger(DiscoveryTvShowsHelper.class);
 
+    List<String> list;
+    List<String> favoriteVideosTitle;
 
     /*
-        Helper to input search item
-        Verify Search results info bar contains the input text
+        Helper to Wait till the page loads and then select the shows which contain "APOLLO"
     */
-    List<String> list;
-    public void selectShow(String searchText) {
+    public void selectShowByTitle(String showTitle) {
         log.info("************************ Helper to search item from Discovery Homepage started ***********************");
         try{
 
@@ -42,7 +42,7 @@ public class DiscoveryTvShowsHelper extends DriverScript {
             scrollDownPage();
             System.out.println("Scroll down page complete");
             wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getTvShowsTitle()));
-            List<WebElement> elementList = getDriver().findElements(By.xpath("//div/a[contains(@href,'"+searchText.toString()+"')]"));
+            List<WebElement> elementList = getDriver().findElements(By.xpath("//div/a[contains(@href,'"+showTitle.toString()+"')]"));
 
             list = new ArrayList<>();
             for(WebElement element: elementList){
@@ -52,38 +52,31 @@ public class DiscoveryTvShowsHelper extends DriverScript {
 
             }
 
-
         }catch(Exception e){
-            throw new ElementNotVisibleException("Element not visible ");
+            log.error(e.getMessage());
         }
 
         log.info("************************ Helper to search item from Discovery Homepage completed ***********************");
     }
 
-    List<String> favoriteVideosTitle;
+    /*
+        Store all the favorite or unfavorite done titles in list.
+    */
     public List<String> addFavoriteUnfavoriteShows() {
         log.info("************************ Helper to search item from Discovery Homepage started ***********************");
         try{
             favoriteVideosTitle = new ArrayList<>();
             for(String href: list){
-                System.out.println(href);
                 openLinkInNewWindow(href);
 
-                System.out.println(discoveryTvShowPage.getHeroImage());
                 wait.until(ExpectedConditions.visibilityOf(discoveryTvShowPage.getHeroImage()));
-                System.out.println(discoveryTvShowPage.heroImagePlusIcon);
-                if(discoveryTvShowPage.heroImagePlusIcon.isEnabled()){
-
+                if(discoveryTvShowPage.getHeroImagePlusIcon().isEnabled()){
                     discoveryTvShowPage.getHeroImagePlusIcon().click();
                     wait.until(ExpectedConditions.visibilityOf(discoveryTvShowPage.getHeroImageLogo()));
                     String favoriteVideoTitle = discoveryTvShowPage.getHeroImageLogo().getAttribute("alt");
                     favoriteVideosTitle.add(favoriteVideoTitle.toLowerCase());
-
-                    System.out.println("Wait for icon is displayed..");
-
-//                    Assert.assertTrue(discoveryHomePage.getHeroImageMinusIcon().isDisplayed());
+                    Assert.assertTrue(discoveryTvShowPage.getHeroImageMinusIcon().isDisplayed());
                 }else {
-                    System.out.println("Plus icon is displayed..");
                     Assert.assertTrue(discoveryTvShowPage.getHeroImageMinusIcon().isDisplayed(),
                             "Best Seller Item Heading is not displayed");
                     discoveryTvShowPage.getHeroImageMinusIcon().click();
@@ -93,7 +86,7 @@ public class DiscoveryTvShowsHelper extends DriverScript {
             }
             switchToParentWindow();
         }catch(Exception e){
-            throw new ElementNotVisibleException("Element not visible ");
+            log.error(e.getMessage());
         }
 
         log.info("************************ Helper to search item from Discovery Homepage completed ***********************");

@@ -1,7 +1,7 @@
 Feature: Verify Favorite Shows
   1.	Navigate to https://go.discovery.com/
-  2.	Select “See All Shows” available in “Shows” tab
-  3.	Wait till the page loads and then select the shows which contain “APOLLO”
+  2.	Select "See All Shows" available in "Shows" tab
+  3.	Wait till the page loads and then select the shows which contain "APOLLO"
   4.	Verify the Favorites (+ or -) status.
   5.	If it is already set i.e. “-”, do unfavorite and icon should change to i.e. “+”.
   6.	If it is not set i.e. "+", do favorite and icon should change to i.e. "-".

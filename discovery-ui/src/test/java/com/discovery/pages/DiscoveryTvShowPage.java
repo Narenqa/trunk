@@ -20,30 +20,44 @@ public class DiscoveryTvShowPage extends DriverScript {
 
 
     @FindBy(css = "a.dscHeaderMain__headerLogo")
-    WebElement headerLogo;
+    private WebElement headerLogo;
 
     @FindBy(css = "li.dscHeaderMain__showsLink")
-    public WebElement showsLink;
+    private WebElement showsLink;
 
 	@FindBy(css = "a.dscShowsDropContent__seeAllShows")
-	public WebElement seeAllShowsButton;
+	private WebElement seeAllShowsButton;
 
     @FindBy(css = "div.allShowsGrid__container")
-    public WebElement seeAllGrid;
+    private WebElement seeAllGrid;
 
     @FindBy(xpath = "//div/a[contains(@href,\"apollo\")]")
-    public WebElement tvShowsTitle;
-
+    private WebElement tvShowsTitle;
 
 
     @FindBy(css = "div.showHero__showImage")
-    public WebElement heroImage;
+    private WebElement heroImage;
 
     @FindBy(css = "div.showHero__main i.icon-plus")
-    public WebElement heroImagePlusIcon;
+    private WebElement heroImagePlusIcon;
 
     @FindBy(css = "div.showHero__main i.icon-minus")
-    public WebElement heroImageMinusIcon;
+    private WebElement heroImageMinusIcon;
+
+    @FindBy(css = "img.showHero__showLogo")
+    private WebElement heroImageLogo;
+
+    @FindBy(css = "section.FavoriteShowsCarousel")
+    private WebElement favoriteShowsCarousel;
+
+    @FindBy(css = "section.FavoriteShowsCarousel h3 div")
+    private WebElement favoriteShowsTitle;
+
+    @FindBy(css = "li>svg.dscHeaderMain__iconMenu")
+    private WebElement menuIcon;
+
+    @FindBy(css = "a[href=\"/my-videos\"]")
+    private WebElement myVidesLink;
 
     public WebElement getHeroImageLogo() {
         return heroImageLogo;
@@ -53,20 +67,6 @@ public class DiscoveryTvShowPage extends DriverScript {
         this.heroImageLogo = heroImageLogo;
     }
 
-    @FindBy(css = "img.showHero__showLogo")
-    WebElement heroImageLogo;
-
-    @FindBy(css = "section.FavoriteShowsCarousel")
-    public WebElement favoriteShowsCarousel;
-
-    @FindBy(css = "section.FavoriteShowsCarousel h3 div")
-    public WebElement favoriteShowsTitle;
-
-
-    @FindBy(css = "li>svg.dscHeaderMain__iconMenu")
-    public WebElement menuIcon;
-
-
     public WebElement getMyVidesLink() {
         return myVidesLink;
     }
@@ -75,9 +75,6 @@ public class DiscoveryTvShowPage extends DriverScript {
         this.myVidesLink = myVidesLink;
     }
 
-    @FindBy(css = "a[href=\"/my-videos\"]")
-    public WebElement myVidesLink;
-
     public WebElement getMenuIcon() {
         return menuIcon;
     }
@@ -85,7 +82,6 @@ public class DiscoveryTvShowPage extends DriverScript {
     public void setMenuIcon(WebElement menuIcon) {
         this.menuIcon = menuIcon;
     }
-
 
     public WebElement getHeaderLogo() {
         return headerLogo;

@@ -3,7 +3,6 @@ package com.discovery.helpers;
 import com.discovery.pages.DiscoveryHomePage;
 import com.discovery.ui_tests.DriverScript;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,56 +20,58 @@ public class DiscoveryHelper extends DriverScript {
     Logger log = Logger.getLogger(DiscoveryHelper.class);
 
 
-
-
-
-	public void navigateToDiscoveryHomePage(String url) {
+	public void scrollToPopularShows() {
         log.info("************************ Helper to navigate to Discovery Homepage started ***********************");
         try{
-            goToURL(url);
-            waitForPageLoad();
             wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getHeaderLogo()));
-            Assert.assertTrue(discoveryHomePage.getShowsLink().isDisplayed(),
+            System.out.println("Scroll down");
+            scrollDownPage();
+            System.out.println("Scroll down page");
+            scrollToBottom();
+            System.out.println("Scroll down complete");
+            scrollUpPage();
+            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getPopularShowsCarousel()));
+            Assert.assertTrue(discoveryHomePage.getPopularShowsRightArrow().isDisplayed(),
                     "Cart count field is not displayed");
 
         } catch(Exception e){
-            Assert.fail("Navigate to Discovery Homepage failed");
+            log.error(e.getMessage());
         }
         log.info("************************ Helper to navigate to Discovery Homepage Completed ***********************");
 	}
 
-    public void navigateToSeeAllShows(String seeAllShows, String showsLink) {
+    public void goToLastVideo() {
         log.info("************************ Helper to navigate to Discovery Homepage started ***********************");
         try{
-            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getShowsLink()));
-            String linkText = discoveryHomePage.getShowsLink().getText();
-            Assert.assertEquals(linkText, showsLink, "Link text ");
 
-            discoveryHomePage.getShowsLink().click();
-            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getSeeAllShowsButton()));
-            Assert.assertTrue(discoveryHomePage.getSeeAllShowsButton().isEnabled(),
+            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getPopularShowsCarousel()));
+            Assert.assertTrue(discoveryHomePage.getPopularShowsRightArrow().isDisplayed(),
                     "Cart count field is not displayed");
-            Assert.assertEquals(discoveryHomePage.getSeeAllShowsButton().getText(), seeAllShows, "Link text ");
-            discoveryHomePage.getSeeAllShowsButton().click();
+            while (discoveryHomePage.getPopularShowsRightArrow().isDisplayed()){
+                discoveryHomePage.getPopularShowsRightArrow().click();
+                wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getPopularShowsLeftArrow()));
+            }
 
         } catch(Exception e){
-            Assert.fail("Navigate to Discovery Homepage failed");
+            log.error(e.getMessage());
         }
         log.info("************************ Helper to navigate to Discovery Homepage Completed ***********************");
     }
 
-
-    public void waitForPageLoad() {
-        log.info("************************ Helper to search item from Discovery Homepage started ***********************");
+    public void clickExploreTheShowButton(String label) {
+        log.info("************************ Helper to navigate to Discovery Homepage started ***********************");
         try{
 
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//body")));
+            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getPopularShowsExploreButton()));
+            Assert.assertEquals(discoveryHomePage.getPopularShowsExploreButton().getText(), label,
+                    "label is not as expected");
+            discoveryHomePage.getPopularShowsExploreButton().click();
+            waitForPageToLoad();
 
-        }catch(Exception e){
-            Assert.fail("Search in Discovery Homepage failed");
+        } catch(Exception e){
+            log.error(e.getMessage());
         }
-
-        log.info("************************ Helper to search item from Discovery Homepage completed ***********************");
+        log.info("************************ Helper to navigate to Discovery Homepage Completed ***********************");
     }
 
 }

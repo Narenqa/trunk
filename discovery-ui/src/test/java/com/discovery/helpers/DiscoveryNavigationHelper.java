@@ -5,7 +5,6 @@ import com.discovery.ui_tests.DriverScript;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -20,30 +19,10 @@ public class DiscoveryNavigationHelper extends DriverScript {
 
     Logger log = Logger.getLogger(DiscoveryNavigationHelper.class);
 
+
     /*
-        Helper to navigate to Discovery Homepage
-        Verify Search box and search button are present
+           Helper to navigate to Discovery Homepage
     */
-    public void navigateToMyVideos(String myVideos) {
-        log.info("************************ Helper to navigate to Discovery Homepage started ***********************");
-        try{
-            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getMenuIcon()));
-
-
-            discoveryHomePage.getMenuIcon().click();
-            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getMyVidesLink()));
-
-            Assert.assertEquals(discoveryHomePage.getMyVidesLink().getText(), myVideos, "Link text ");
-            discoveryHomePage.getMyVidesLink().click();
-            waitForPageLoad();
-
-        } catch(Exception e){
-            Assert.fail("Navigate to Discovery Homepage failed");
-        }
-        log.info("************************ Helper to navigate to Discovery Homepage Completed ***********************");
-    }
-
-
 	public void navigateToDiscoveryHomePage(String url) {
         log.info("************************ Helper to navigate to Discovery Homepage started ***********************");
         try{
@@ -59,8 +38,34 @@ public class DiscoveryNavigationHelper extends DriverScript {
         log.info("************************ Helper to navigate to Discovery Homepage Completed ***********************");
 	}
 
+    /*
+        Helper to navigate to Discovery MyVideos page
+    */
+    public void navigateToMyVideos(String myVideos) {
+        log.info("************************ Helper to navigate to Discovery MyVideos started ***********************");
+        try{
+            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getMenuIcon()));
+
+
+            discoveryHomePage.getMenuIcon().click();
+            wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getMyVideosLink()));
+
+            Assert.assertEquals(discoveryHomePage.getMyVideosLink().getText(), myVideos, "Link text ");
+            discoveryHomePage.getMyVideosLink().click();
+            waitForPageLoad();
+
+        } catch(Exception e){
+            log.error(e.getMessage());
+        }
+        log.info("************************ Helper to navigate to Discovery MyVideos Completed ***********************");
+    }
+
+    /*
+        Helper to navigate to Discovery SeeAllShows page
+        Select "See All Shows" available in "Shows" tab
+    */
     public void navigateToSeeAllShows(String seeAllShows, String showsLink) {
-        log.info("************************ Helper to navigate to Discovery Homepage started ***********************");
+        log.info("************************ Helper to navigate to Discovery SeeAllShows page started ***********************");
         try{
             wait.until(ExpectedConditions.visibilityOf(discoveryHomePage.getShowsLink()));
             String linkText = discoveryHomePage.getShowsLink().getText();
@@ -74,9 +79,9 @@ public class DiscoveryNavigationHelper extends DriverScript {
             discoveryHomePage.getSeeAllShowsButton().click();
 
         } catch(Exception e){
-            Assert.fail("Navigate to Discovery Homepage failed");
+            log.error(e.getMessage());
         }
-        log.info("************************ Helper to navigate to Discovery Homepage Completed ***********************");
+        log.info("************************ Helper to navigate to Discovery SeeAllShows page Completed ***********************");
     }
 
 
@@ -87,7 +92,7 @@ public class DiscoveryNavigationHelper extends DriverScript {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//body")));
 
         }catch(Exception e){
-            Assert.fail("Search in Discovery Homepage failed");
+            log.error(e.getMessage());
         }
 
         log.info("************************ Helper to search item from Discovery Homepage completed ***********************");

@@ -9,6 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DriverScript {
@@ -95,6 +96,12 @@ public class DriverScript {
 		js.executeScript(script);
 	}
 
+	public void scrollUpPage() {
+		JavascriptExecutor js = getJavascriptExecutor();
+		String script = "window.scrollTo(100, 0)";
+		js.executeScript(script);
+	}
+
 	public static boolean isPageLoaded() {
 		boolean pageLoad = false;
 		JavascriptExecutor js = getJavascriptExecutor();
@@ -107,15 +114,9 @@ public class DriverScript {
 
 	public static void waitForPageToLoad() throws AutomationException {
 
-		RemoteWebElement oldBody = (RemoteWebElement) driver.findElement(By.xpath("//body"));
+		WebDriverWait wait = new WebDriverWait(driver, 500);
 		try {
-			new WebDriverWait(driver, 500).until(new ExpectedCondition<Boolean>() {
-				@Override
-				public Boolean apply(WebDriver driver) {
-					RemoteWebElement newBody = (RemoteWebElement) driver.findElement(By.xpath("//body"));
-					return isPageLoaded() && !oldBody.getId().equals(newBody.getId());
-				}
-			});
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//body")));
 		} catch (Exception e) {
 			throw new TimeoutException();
 		}

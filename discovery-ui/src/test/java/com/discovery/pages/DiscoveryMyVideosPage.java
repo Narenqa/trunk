@@ -20,6 +20,23 @@ public class DiscoveryMyVideosPage extends DriverScript {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(css = "section.FavoriteShowsCarousel div.carousel__content")
+    private WebElement favoriteShowsCarouselContent;
+
+    @FindBy(css = "section.FavoriteShowsCarousel h2")
+    private WebElement favoriteShowsHeading;
+
+    @FindBy(css = "section.FavoriteShowsCarousel div.content-box h3 div")
+    private WebElement myVideosFavoriteShowsTitle;
+
+    @FindBy(css = "section.FavoriteShowsCarousel")
+    private WebElement favoriteShowsCarousel;
+
+    @FindBy(css = "section.FavoriteShowsCarousel div.image-box")
+    private List<WebElement> myVideosFavoriteShowsImage;
+
+    @FindBy(css = "section.FavoriteShowsCarousel div.carousel-tile-wrapper")
+    private List<WebElement> myVideosContentBox;
 
     public WebElement getFavoriteShowsHeading() {
         return favoriteShowsHeading;
@@ -37,12 +54,6 @@ public class DiscoveryMyVideosPage extends DriverScript {
         this.favoriteShowsCarouselContent = favoriteShowsCarouselContent;
     }
 
-    @FindBy(css = "section.FavoriteShowsCarousel div.carousel__content")
-    WebElement favoriteShowsCarouselContent;
-
-    @FindBy(css = "section.FavoriteShowsCarousel h2")
-    WebElement favoriteShowsHeading;
-
     public List<WebElement> getMyVideosFavoriteShowsImage() {
         return myVideosFavoriteShowsImage;
     }
@@ -50,9 +61,6 @@ public class DiscoveryMyVideosPage extends DriverScript {
     public void setMyVideosFavoriteShowsImage(List<WebElement> myVideosFavoriteShowsImage) {
         this.myVideosFavoriteShowsImage = myVideosFavoriteShowsImage;
     }
-
-    @FindBy(css = "section.FavoriteShowsCarousel div.image-box")
-    List<WebElement> myVideosFavoriteShowsImage;
 
     public List<WebElement> getMyVideosContentBox() {
         return myVideosContentBox;
@@ -62,9 +70,6 @@ public class DiscoveryMyVideosPage extends DriverScript {
         this.myVideosContentBox = myVideosContentBox;
     }
 
-    @FindBy(css = "section.FavoriteShowsCarousel div.carousel-tile-wrapper")
-    List<WebElement> myVideosContentBox;
-
 
     public WebElement getMyVideosFavoriteShowsTitle() {
         return myVideosFavoriteShowsTitle;
@@ -73,12 +78,6 @@ public class DiscoveryMyVideosPage extends DriverScript {
     public void setMyVideosFavoriteShowsTitle(WebElement myVideosFavoriteShowsTitle) {
         this.myVideosFavoriteShowsTitle = myVideosFavoriteShowsTitle;
     }
-
-    @FindBy(css = "section.FavoriteShowsCarousel div.content-box h3 div")
-    WebElement myVideosFavoriteShowsTitle;
-
-    @FindBy(css = "section.FavoriteShowsCarousel")
-    public WebElement favoriteShowsCarousel;
 
     public WebElement getFavoriteShowsCarousel() {
         return favoriteShowsCarousel;
